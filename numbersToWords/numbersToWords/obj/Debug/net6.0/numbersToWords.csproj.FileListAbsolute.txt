@@ -1,0 +1,15 @@
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\bin\Debug\net6.0\numbersToWords.exe
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\bin\Debug\net6.0\numbersToWords.deps.json
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\bin\Debug\net6.0\numbersToWords.runtimeconfig.json
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\bin\Debug\net6.0\numbersToWords.dll
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\bin\Debug\net6.0\numbersToWords.pdb
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\obj\Debug\net6.0\numbersToWords.csproj.AssemblyReference.cache
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\obj\Debug\net6.0\numbersToWords.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\obj\Debug\net6.0\numbersToWords.AssemblyInfoInputs.cache
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\obj\Debug\net6.0\numbersToWords.AssemblyInfo.cs
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\obj\Debug\net6.0\numbersToWords.csproj.CoreCompileInputs.cache
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\obj\Debug\net6.0\numbersToWords.dll
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\obj\Debug\net6.0\refint\numbersToWords.dll
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\obj\Debug\net6.0\numbersToWords.pdb
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\obj\Debug\net6.0\numbersToWords.genruntimeconfig.cache
+C:\Users\karak\Desktop\GYGY23\numbersToWords\numbersToWords\obj\Debug\net6.0\ref\numbersToWords.dll
