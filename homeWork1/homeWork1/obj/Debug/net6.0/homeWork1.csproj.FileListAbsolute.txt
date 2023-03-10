@@ -1,0 +1,15 @@
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\bin\Debug\net6.0\homeWork1.exe
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\bin\Debug\net6.0\homeWork1.deps.json
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\bin\Debug\net6.0\homeWork1.runtimeconfig.json
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\bin\Debug\net6.0\homeWork1.dll
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\bin\Debug\net6.0\homeWork1.pdb
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\obj\Debug\net6.0\homeWork1.csproj.AssemblyReference.cache
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\obj\Debug\net6.0\homeWork1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\obj\Debug\net6.0\homeWork1.AssemblyInfoInputs.cache
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\obj\Debug\net6.0\homeWork1.AssemblyInfo.cs
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\obj\Debug\net6.0\homeWork1.csproj.CoreCompileInputs.cache
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\obj\Debug\net6.0\homeWork1.dll
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\obj\Debug\net6.0\refint\homeWork1.dll
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\obj\Debug\net6.0\homeWork1.pdb
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\obj\Debug\net6.0\homeWork1.genruntimeconfig.cache
+C:\Users\karak\Desktop\GYGY23\homeWork1\homeWork1\obj\Debug\net6.0\ref\homeWork1.dll
