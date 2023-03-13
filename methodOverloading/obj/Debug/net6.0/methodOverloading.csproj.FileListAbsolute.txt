@@ -1,0 +1,15 @@
+C:\Users\karak\Desktop\GYGY23\methodOverloading\bin\Debug\net6.0\methodOverloading.exe
+C:\Users\karak\Desktop\GYGY23\methodOverloading\bin\Debug\net6.0\methodOverloading.deps.json
+C:\Users\karak\Desktop\GYGY23\methodOverloading\bin\Debug\net6.0\methodOverloading.runtimeconfig.json
+C:\Users\karak\Desktop\GYGY23\methodOverloading\bin\Debug\net6.0\methodOverloading.dll
+C:\Users\karak\Desktop\GYGY23\methodOverloading\bin\Debug\net6.0\methodOverloading.pdb
+C:\Users\karak\Desktop\GYGY23\methodOverloading\obj\Debug\net6.0\methodOverloading.csproj.AssemblyReference.cache
+C:\Users\karak\Desktop\GYGY23\methodOverloading\obj\Debug\net6.0\methodOverloading.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\karak\Desktop\GYGY23\methodOverloading\obj\Debug\net6.0\methodOverloading.AssemblyInfoInputs.cache
+C:\Users\karak\Desktop\GYGY23\methodOverloading\obj\Debug\net6.0\methodOverloading.AssemblyInfo.cs
+C:\Users\karak\Desktop\GYGY23\methodOverloading\obj\Debug\net6.0\methodOverloading.csproj.CoreCompileInputs.cache
+C:\Users\karak\Desktop\GYGY23\methodOverloading\obj\Debug\net6.0\methodOverloading.dll
+C:\Users\karak\Desktop\GYGY23\methodOverloading\obj\Debug\net6.0\refint\methodOverloading.dll
+C:\Users\karak\Desktop\GYGY23\methodOverloading\obj\Debug\net6.0\methodOverloading.pdb
+C:\Users\karak\Desktop\GYGY23\methodOverloading\obj\Debug\net6.0\methodOverloading.genruntimeconfig.cache
+C:\Users\karak\Desktop\GYGY23\methodOverloading\obj\Debug\net6.0\ref\methodOverloading.dll
