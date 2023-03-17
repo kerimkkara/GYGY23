@@ -1,0 +1,8 @@
+C:\Users\karak\Desktop\GYGY23\OppHomework\bin\Debug\OppHomework.exe.config
+C:\Users\karak\Desktop\GYGY23\OppHomework\bin\Debug\OppHomework.exe
+C:\Users\karak\Desktop\GYGY23\OppHomework\bin\Debug\OppHomework.pdb
+C:\Users\karak\Desktop\GYGY23\OppHomework\obj\Debug\OppHomework.csproj.AssemblyReference.cache
+C:\Users\karak\Desktop\GYGY23\OppHomework\obj\Debug\OppHomework.csproj.SuggestedBindingRedirects.cache
+C:\Users\karak\Desktop\GYGY23\OppHomework\obj\Debug\OppHomework.csproj.CoreCompileInputs.cache
+C:\Users\karak\Desktop\GYGY23\OppHomework\obj\Debug\OppHomework.exe
+C:\Users\karak\Desktop\GYGY23\OppHomework\obj\Debug\OppHomework.pdb
