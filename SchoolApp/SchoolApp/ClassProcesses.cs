@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace SchoolApp
 {
@@ -15,15 +16,24 @@ namespace SchoolApp
         private string teacherName;
         public ClassProcesses()
         {
-
+            UpdateList();
             InitializeComponent();
         }
 
         private void ClassProcesses_Load(object sender, EventArgs e)
         {
+
+            UpdateList();
+        }
+
+        private void UpdateList()
+        {
             foreach (Lesson lesson in Lesson.lessons)
             {
                 comboBox1.Items.Add(lesson.LessonName);
+                comboBox4.Items.Add(lesson.LessonName);
+                comboBox6.Items.Add(lesson.LessonName);
+
             }
 
             foreach (Teacher teacher in Teacher.teachers)
@@ -35,56 +45,151 @@ namespace SchoolApp
             foreach (Class classes in Class.classes)
             {
                 comboBox3.Items.Add(classes.ClassName);
+                comboBox5.Items.Add(classes.ClassName);
             }
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string selectedClass = comboBox3.SelectedItem.ToString();
-            string selectedLesson = comboBox1.SelectedItem.ToString();
+            try
+            {
+                string selectedClass = comboBox3.SelectedItem.ToString();
+                string selectedLesson = comboBox1.SelectedItem.ToString();
 
-            Class selectedClassObj = Class.classes.Find(c => c.ClassName == selectedClass);
+                Class selectedClassObj = Class.classes.Find(c => c.ClassName == selectedClass);
 
-            Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
+                Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
 
-            selectedClassObj.AddLesson(selectedLessonObj);
+                selectedClassObj.AddLesson(selectedLessonObj);
+
+                MessageBox.Show("Lesson added successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedTeacher = comboBox1.SelectedItem.ToString();
-            teacherName = selectedTeacher;
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string className = textBox1.Text;
-
-            Teacher selectedTeacher = null;
-            foreach (Teacher teacher in Teacher.teachers)
+            try
             {
-                if (teacher.TeacherName == teacherName)
+                string className = textBox1.Text;
+                string teacherName = comboBox2.SelectedItem.ToString();
+
+                if (string.IsNullOrWhiteSpace(className))
                 {
-                    selectedTeacher = teacher;
-                    break;
+                    throw new Exception("Class name cannot be empty.");
                 }
+
+                if (comboBox2.SelectedItem == null)
+                {
+                    throw new Exception("Please select a teacher for the class.");
+                }
+
+                Teacher selectedTeacher = Teacher.teachers.Find(t => t.TeacherName == teacherName);
+
+                if (selectedTeacher == null)
+                {
+                    throw new Exception("Selected teacher is not valid.");
+                }
+
+                Class classes = new Class(className, selectedTeacher);
+
+                MessageBox.Show("Class created successfully.");
             }
-            Class classes = new Class(className, selectedTeacher);
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Please select a teacher for the class.");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid input.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string selectedClass = comboBox5.SelectedItem.ToString();
-            string selectedLesson = comboBox4.SelectedItem.ToString();
+            try
+            {
+                string selectedClass = comboBox5.SelectedItem.ToString();
+                string selectedLesson = comboBox4.SelectedItem.ToString();
 
-            Class selectedClassObj = Class.classes.Find(c => c.ClassName == selectedClass);
+                Class selectedClassObj = Class.classes.Find(c => c.ClassName == selectedClass);
 
-            Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
+                Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
 
-            selectedClassObj.RemoveLesson(selectedLessonObj);
+                selectedClassObj.RemoveLesson(selectedLessonObj);
+
+                MessageBox.Show("Lesson removed successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UpdateList();
+        }
+
+
+
+        private void UpdateClassList()
+        {
+            try
+            {
+                listBox1.Items.Clear();
+                foreach (Class classes in Class.classes)
+                {
+                    string classInfo = (classes.ClassId + " " + classes.ClassName);
+                    listBox1.Items.Add(classInfo);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            UpdateClassList();
+        }
+
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string selectedClass = comboBox6.SelectedItem.ToString();
+                Class selectedClassObj = Class.classes.Find(c => c.ClassName == selectedClass);
+
+                List<Lesson> lessonList = selectedClassObj.GetLessonList();
+                listBox2.Items.Clear();
+
+                foreach (Lesson lesson in lessonList)
+                {
+                    listBox2.Items.Add(lesson.LessonName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }

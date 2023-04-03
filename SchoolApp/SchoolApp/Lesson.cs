@@ -47,4 +47,8 @@ internal class Lesson
     {
         get { return students; }
     }
+    public List<Student> GetStudentsList()
+    {
+        return students;
+    }
 }

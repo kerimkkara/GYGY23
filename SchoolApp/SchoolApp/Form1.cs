@@ -37,5 +37,11 @@ namespace SchoolApp
             TeacherProcesses teacherProcesses = new TeacherProcesses();
             teacherProcesses.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            LessonProcesses lessonProcesses = new LessonProcesses();
+            lessonProcesses.ShowDialog();
+        }
     }
 }

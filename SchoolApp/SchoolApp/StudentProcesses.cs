@@ -25,20 +25,8 @@ namespace SchoolApp
 
         private void StudentProcesses_Load(object sender, EventArgs e)
         {
-            AddLessonsToComboBox();
             StudentList();
         }
-
-        private void AddLessonsToComboBox()
-        {
-            foreach (Lesson lesson in Lesson.lessons)
-            {
-                string lessonInfo = lesson.LessonId + " " + lesson.LessonName;
-                comboBox1.Items.Add(lessonInfo);
-                comboBox2.Items.Add(lessonInfo);
-            }
-        }
-
 
         private void StudentList()
         {

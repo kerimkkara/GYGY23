@@ -11,12 +11,13 @@ namespace SchoolApp
 
         public static List<Teacher> teachers = new List<Teacher>();
 
+        private static int counter = 0;
         private int teacherId;
         private string teacherName;
 
-        public Teacher(int teacherId, string teacherName)
+        public Teacher(string teacherName)
         {
-            this.teacherId = teacherId;
+            this.teacherId = ++counter;
             this.teacherName = teacherName;
             Teacher.teachers.Add(this);
         }
