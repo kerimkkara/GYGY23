@@ -1,6 +1,6 @@
 ﻿using SchoolApp;
 
-internal class Lesson
+public class Lesson
 {
     public static List<Lesson> lessons = new List<Lesson>();
 
@@ -47,8 +47,5 @@ internal class Lesson
     {
         get { return students; }
     }
-    public List<Student> GetStudentsList()
-    {
-        return students;
-    }
+    
 }

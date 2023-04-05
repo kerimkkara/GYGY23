@@ -19,3 +19,5 @@ C:\Users\karak\Desktop\GYGY23\SchoolApp\SchoolApp\obj\Debug\net6.0-windows\ref\S
 C:\Users\karak\Desktop\GYGY23\SchoolApp\SchoolApp\obj\Debug\net6.0-windows\SchoolApp.StudentProcesses.resources
 C:\Users\karak\Desktop\GYGY23\SchoolApp\SchoolApp\obj\Debug\net6.0-windows\SchoolApp.LessonProcesses.resources
 C:\Users\karak\Desktop\GYGY23\SchoolApp\SchoolApp\obj\Debug\net6.0-windows\SchoolApp.TeacherProcesses.resources
+C:\Users\karak\Desktop\GYGY23\SchoolApp\SchoolApp\obj\Debug\net6.0-windows\SchoolApp.AssignProcesses.resources
+C:\Users\karak\Desktop\GYGY23\SchoolApp\SchoolApp\obj\Debug\net6.0-windows\SchoolApp.SearchProcesses.resources

@@ -16,7 +16,6 @@ namespace SchoolApp
         private string teacherName;
         public ClassProcesses()
         {
-            UpdateList();
             InitializeComponent();
         }
 
@@ -28,6 +27,13 @@ namespace SchoolApp
 
         private void UpdateList()
         {
+            comboBox1.Items.Clear();
+            comboBox2.Items.Clear();
+            comboBox3.Items.Clear();
+            comboBox4.Items.Clear();
+            comboBox5.Items.Clear();
+            comboBox6.Items.Clear();
+
             foreach (Lesson lesson in Lesson.lessons)
             {
                 comboBox1.Items.Add(lesson.LessonName);
@@ -48,7 +54,6 @@ namespace SchoolApp
                 comboBox5.Items.Add(classes.ClassName);
             }
         }
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -117,7 +122,6 @@ namespace SchoolApp
         }
 
 
-
         private void button3_Click(object sender, EventArgs e)
         {
             try
@@ -177,7 +181,7 @@ namespace SchoolApp
                 string selectedClass = comboBox6.SelectedItem.ToString();
                 Class selectedClassObj = Class.classes.Find(c => c.ClassName == selectedClass);
 
-                List<Lesson> lessonList = selectedClassObj.GetLessonList();
+                List<Lesson> lessonList = selectedClassObj.Lessons;
                 listBox2.Items.Clear();
 
                 foreach (Lesson lesson in lessonList)

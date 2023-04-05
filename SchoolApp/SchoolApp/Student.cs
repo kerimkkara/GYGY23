@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolApp
 {
-    internal class Student : Person
+    public class Student : Person
     {
         public static List<Student> students = new List<Student>();
 

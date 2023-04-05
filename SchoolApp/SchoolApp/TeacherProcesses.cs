@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SchoolApp
 {
-    public partial class TeacherProcesses : Form
+    public partial class TeacherProcesses : Form , ITeacherProcesses
     {
         public TeacherProcesses()
         {
@@ -19,10 +19,48 @@ namespace SchoolApp
 
         private void TeacherProcesses_Load(object sender, EventArgs e)
         {
-            TeacherList();
+            ((ITeacherProcesses)this).TeacherList();
         }
 
-        private void TeacherList()
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string teacherName = textBox1.Text.Trim();
+
+            if (string.IsNullOrEmpty(teacherName))
+            {
+                MessageBox.Show("Öğretmen adı boş olamaz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                Teacher teacher = ((ITeacherProcesses)this).AddTeacher(teacherName);
+                MessageBox.Show($"Öğretmen eklendi. ID: {teacher.TeacherId}", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ((ITeacherProcesses)this).TeacherList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ((ITeacherProcesses)this).TeacherList();
+        }
+
+        Teacher ITeacherProcesses.AddTeacher(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("Öğretmen adı boş bırakılamaz");
+            }
+
+            Teacher teacher = new Teacher(name);
+            return teacher;
+        }
+
+        void ITeacherProcesses.TeacherList()
         {
             listBox1.Items.Clear();
             foreach (Teacher teacher in Teacher.teachers)
@@ -30,17 +68,6 @@ namespace SchoolApp
                 string teacherInfo = teacher.TeacherId + " " + teacher.TeacherName;
                 listBox1.Items.Add(teacherInfo);
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            String TeacherName = (String)textBox1.Text;
-            Teacher teacher = new Teacher(TeacherName);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            TeacherList();
         }
     }
 }

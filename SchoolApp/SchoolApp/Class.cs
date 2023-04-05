@@ -48,9 +48,4 @@ internal class Class
         get { return lessons; }
     }
 
-    public List<Lesson> GetLessonList()
-    {
-        return lessons;
-    }
-
 }

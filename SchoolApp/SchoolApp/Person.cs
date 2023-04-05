@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolApp
 {
-    internal abstract class Person
+    public abstract class Person
     {
 
     }
