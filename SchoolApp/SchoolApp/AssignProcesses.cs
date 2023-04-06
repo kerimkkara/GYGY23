@@ -11,7 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SchoolApp
 {
-    public partial class AssignProcesses : Form
+    public partial class AssignProcesses : Form, IAssignmentProcesses
     {
         public AssignProcesses()
         {
@@ -65,7 +65,7 @@ namespace SchoolApp
 
                 foreach (Student student in Class.classes[comboBox1.SelectedIndex].Lessons[comboBox2.SelectedIndex].Students)
                 {
-                    assignment.AddStudent(student);
+                    ((IAssignmentProcesses)this).AddStudent(student, assignment);
                 }
                 listBox1.Items.Add(assignment.AssignmentName);
 
@@ -82,6 +82,16 @@ namespace SchoolApp
         {
 
             MessageBox.Show("Ödev teslim edildi");
+        }
+
+        public void AddStudent(Student student, Assignment assignment)
+        {
+            assignment.AssignedStudents.Add(student);
+        }
+        
+        public void RemoveStudent(Student student, Assignment assignment)
+        {
+            assignment.AssignedStudents.Remove(student);
         }
     }
 }

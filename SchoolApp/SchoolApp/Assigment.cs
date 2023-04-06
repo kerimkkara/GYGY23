@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolApp
 {
-    internal class Assignment
+    public class Assignment
     {
         private static int counter = 0;
         public int AssignmentId { get; set; }
@@ -24,15 +24,6 @@ namespace SchoolApp
             AssignedStudents = new List<Student>();
         }
 
-        public void AddStudent(Student student)
-        {
-            AssignedStudents.Add(student);
-        }
-
-        public void RemoveStudent(Student student)
-        {
-            AssignedStudents.Remove(student);
-        }
     }
 
 }

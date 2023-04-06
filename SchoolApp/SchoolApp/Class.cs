@@ -1,6 +1,6 @@
 ﻿using SchoolApp;
 
-internal class Class
+public class Class
 {
     public static List<Class> classes = new List<Class>();
 

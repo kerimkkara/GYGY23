@@ -36,16 +36,16 @@ namespace SchoolApp
 
                 String lessonName = (String)textBox1.Text;
 
-                Lesson lesson = ((ILessonProcesses)this).AddLesson(lessonName,teacher);
-             
-                MessageBox.Show($"Öğrenci eklendi. ID: {lesson.LessonId}", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Lesson lesson = ((ILessonProcesses)this).AddLesson(lessonName, teacher);
+
+                MessageBox.Show($"Ders eklendi. ID: {lesson.LessonId}", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ((ILessonProcesses)this).LessonList();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -67,7 +67,7 @@ namespace SchoolApp
                 Student selectedStudentObj = Student.students.Find(s => s.StudentName == selectedStudent);
                 Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
 
-                selectedLessonObj.AddStudent(selectedStudentObj);
+                ((ILessonProcesses)this).AddStudent(selectedStudentObj, selectedLessonObj);
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace SchoolApp
             Lesson lesson = new Lesson(name, teacher);
             return lesson;
         }
-        
+
 
         void ILessonProcesses.LessonList()
         {
@@ -136,6 +136,35 @@ namespace SchoolApp
             {
                 comboBox3.Items.Add($"{student.StudentId} {student.StudentName}");
             }
+        }
+
+        public void AddStudent(Student student, Lesson lesson)
+        {
+            lesson.Students.Add(student);
+        }
+
+        public void RemoveStudent(Student student, Lesson lesson)
+        {
+            lesson.Students.Remove(student);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string selectedStudent = comboBox3.SelectedItem.ToString();
+                string selectedLesson = comboBox2.SelectedItem.ToString();
+
+                Student selectedStudentObj = Student.students.Find(s => s.StudentName == selectedStudent);
+                Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
+
+                ((ILessonProcesses)this).RemoveStudent(selectedStudentObj, selectedLessonObj);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

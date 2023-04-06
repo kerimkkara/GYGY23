@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
+// ClassProcesses ve LessonProcesses düzeltilecek
+// Arama sayfasını düzelt
+// Ondan sonra bug düzenlemesi kalıyor
 namespace SchoolApp
 {
-    public partial class ClassProcesses : Form
+    public partial class ClassProcesses : Form , IClassProcesses
     {
         private string teacherName;
         public ClassProcesses()
@@ -195,5 +198,19 @@ namespace SchoolApp
             }
         }
 
+        public Class AddClass(string name, Teacher teacher)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddLesson(Class clas, Lesson lesson)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveLesson(Class clas, Lesson lesson)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
