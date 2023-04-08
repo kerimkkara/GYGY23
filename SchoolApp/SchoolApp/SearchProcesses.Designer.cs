@@ -37,6 +37,11 @@
             button1 = new Button();
             label6 = new Label();
             listBox1 = new ListBox();
+            comboBox2 = new ComboBox();
+            label7 = new Label();
+            button2 = new Button();
+            label8 = new Label();
+            listBox2 = new ListBox();
             SuspendLayout();
             // 
             // label1
@@ -51,25 +56,25 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(102, 69);
+            label2.Location = new Point(35, 69);
             label2.Name = "label2";
-            label2.Size = new Size(120, 15);
+            label2.Size = new Size(160, 15);
             label2.TabIndex = 1;
-            label2.Text = "Öğrenci Hangi Derste";
+            label2.Text = "Öğrenci Hangi Dersleri Alıyor\r\n";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(344, 69);
+            label3.Location = new Point(307, 69);
             label3.Name = "label3";
-            label3.Size = new Size(101, 15);
+            label3.Size = new Size(117, 15);
             label3.TabIndex = 2;
-            label3.Text = "Ders Hangi Sınıfta";
+            label3.Text = "Ders Hangi Sınıflarda\r\n";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(488, 69);
+            label4.Location = new Point(553, 69);
             label4.Name = "label4";
             label4.Size = new Size(124, 15);
             label4.TabIndex = 3;
@@ -120,11 +125,61 @@
             listBox1.Size = new Size(165, 154);
             listBox1.TabIndex = 8;
             // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(343, 100);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 23);
+            comboBox2.TabIndex = 9;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(274, 103);
+            label7.Name = "label7";
+            label7.Size = new Size(51, 15);
+            label7.TabIndex = 10;
+            label7.Text = "Ders Seç";
+            // 
+            // button2
+            // 
+            button2.Location = new Point(389, 143);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 11;
+            button2.Text = "Ara";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(322, 194);
+            label8.Name = "label8";
+            label8.Size = new Size(40, 15);
+            label8.TabIndex = 12;
+            label8.Text = "Sonuç";
+            // 
+            // listBox2
+            // 
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 15;
+            listBox2.Location = new Point(343, 234);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(164, 154);
+            listBox2.TabIndex = 13;
+            // 
             // SearchProcesses
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(listBox2);
+            Controls.Add(label8);
+            Controls.Add(button2);
+            Controls.Add(label7);
+            Controls.Add(comboBox2);
             Controls.Add(listBox1);
             Controls.Add(label6);
             Controls.Add(button1);
@@ -152,5 +207,10 @@
         private Button button1;
         private Label label6;
         private ListBox listBox1;
+        private ComboBox comboBox2;
+        private Label label7;
+        private Button button2;
+        private Label label8;
+        private ListBox listBox2;
     }
 }

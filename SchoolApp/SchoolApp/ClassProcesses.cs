@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolApp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,9 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
-// ClassProcesses ve LessonProcesses düzeltilecek
-// Arama sayfasını düzelt
-// Ondan sonra bug düzenlemesi kalıyor
 namespace SchoolApp
 {
     public partial class ClassProcesses : Form , IClassProcesses
@@ -25,37 +23,7 @@ namespace SchoolApp
         private void ClassProcesses_Load(object sender, EventArgs e)
         {
 
-            UpdateList();
-        }
-
-        private void UpdateList()
-        {
-            comboBox1.Items.Clear();
-            comboBox2.Items.Clear();
-            comboBox3.Items.Clear();
-            comboBox4.Items.Clear();
-            comboBox5.Items.Clear();
-            comboBox6.Items.Clear();
-
-            foreach (Lesson lesson in Lesson.lessons)
-            {
-                comboBox1.Items.Add(lesson.LessonName);
-                comboBox4.Items.Add(lesson.LessonName);
-                comboBox6.Items.Add(lesson.LessonName);
-
-            }
-
-            foreach (Teacher teacher in Teacher.teachers)
-            {
-                comboBox2.Items.Add(teacher.TeacherName);
-            }
-
-
-            foreach (Class classes in Class.classes)
-            {
-                comboBox3.Items.Add(classes.ClassName);
-                comboBox5.Items.Add(classes.ClassName);
-            }
+            ((IClassProcesses)this).UpdateList();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -69,7 +37,7 @@ namespace SchoolApp
 
                 Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
 
-                selectedClassObj.AddLesson(selectedLessonObj);
+                ((IClassProcesses)this).AddLesson(selectedClassObj, selectedLessonObj);
 
                 MessageBox.Show("Lesson added successfully.");
             }
@@ -78,6 +46,7 @@ namespace SchoolApp
                 MessageBox.Show(ex.Message);
             }
         }
+
 
 
 
@@ -99,6 +68,7 @@ namespace SchoolApp
                     throw new Exception("Please select a teacher for the class.");
                 }
 
+
                 Teacher selectedTeacher = Teacher.teachers.Find(t => t.TeacherName == teacherName);
 
                 if (selectedTeacher == null)
@@ -106,9 +76,10 @@ namespace SchoolApp
                     throw new Exception("Selected teacher is not valid.");
                 }
 
-                Class classes = new Class(className, selectedTeacher);
+                Class class1 =   ((IClassProcesses)this).AddClass(className, selectedTeacher);
 
-                MessageBox.Show("Class created successfully.");
+                MessageBox.Show($"Sınıf eklendi. ID: {class1.ClassId}", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ((IClassProcesses)this).ClassList();
             }
             catch (NullReferenceException)
             {
@@ -136,7 +107,7 @@ namespace SchoolApp
 
                 Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
 
-                selectedClassObj.RemoveLesson(selectedLessonObj);
+                ((IClassProcesses)this).RemoveLesson(selectedClassObj, selectedLessonObj);
 
                 MessageBox.Show("Lesson removed successfully.");
             }
@@ -150,32 +121,14 @@ namespace SchoolApp
 
         private void button4_Click(object sender, EventArgs e)
         {
-            UpdateList();
-        }
-
-
-
-        private void UpdateClassList()
-        {
-            try
-            {
-                listBox1.Items.Clear();
-                foreach (Class classes in Class.classes)
-                {
-                    string classInfo = (classes.ClassId + " " + classes.ClassName);
-                    listBox1.Items.Add(classInfo);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            ((IClassProcesses)this).UpdateList();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            UpdateClassList();
+            ((IClassProcesses)this).ClassList();
         }
+
 
         private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -200,17 +153,66 @@ namespace SchoolApp
 
         public Class AddClass(string name, Teacher teacher)
         {
-            throw new NotImplementedException();
+            Class classes = new Class(name, teacher);
+            return classes;
         }
 
         public void AddLesson(Class clas, Lesson lesson)
         {
-            throw new NotImplementedException();
+            clas.Lessons.Add(lesson);
         }
 
         public void RemoveLesson(Class clas, Lesson lesson)
         {
-            throw new NotImplementedException();
+            clas.Lessons.Remove(lesson);
+        }
+
+        public void ClassList()
+        {
+            try
+            {
+                listBox1.Items.Clear();
+                foreach (Class classes in Class.classes)
+                {
+                    string classInfo = (classes.ClassId + " " + classes.ClassName);
+                    listBox1.Items.Add(classInfo);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void IClassProcesses.UpdateList()
+        {
+            comboBox1.Items.Clear();
+            comboBox2.Items.Clear();
+            comboBox3.Items.Clear();
+            comboBox4.Items.Clear();
+            comboBox5.Items.Clear();
+            comboBox6.Items.Clear();
+
+            foreach (Lesson lesson in Lesson.lessons)
+            {
+                comboBox1.Items.Add(lesson.LessonName);
+                comboBox4.Items.Add(lesson.LessonName);
+                
+
+            }
+
+            foreach (Teacher teacher in Teacher.teachers)
+            {
+                comboBox2.Items.Add(teacher.TeacherName);
+            }
+
+
+            foreach (Class classes in Class.classes)
+            {
+                comboBox3.Items.Add(classes.ClassName);
+                comboBox6.Items.Add(classes.ClassName);
+                comboBox5.Items.Add(classes.ClassName);
+            }
         }
     }
 }

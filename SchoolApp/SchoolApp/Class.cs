@@ -18,16 +18,6 @@ public class Class
         Class.classes.Add(this);
     }
 
-    public void AddLesson(Lesson lesson)
-    {
-        lessons.Add(lesson);
-    }
-
-    public void RemoveLesson(Lesson lesson)
-    {
-        lessons.Remove(lesson);
-    }
-
     public int ClassId
     {
         get { return classId; }

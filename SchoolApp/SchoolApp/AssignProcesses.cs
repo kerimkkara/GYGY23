@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolApp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,17 +21,62 @@ namespace SchoolApp
 
         private void AssignProcesses_Load(object sender, EventArgs e)
         {
-            UpdateList();
+           ((IAssignmentProcesses)this).UpdateList();
         }
-        // Sınıf ve ders seçildiğinde otomatik olarak dersin öğretmeni ödevi vermiş olacak
 
-        /*
-         * ödev adı 
-         * bitiş tarihi
-         * seçilen dersi hocası
-         * derste olan öğrencilerin listesi
-         */
-        private void UpdateList()
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox2.Items.Clear();
+
+            foreach (Lesson lesson in Class.classes[comboBox1.SelectedIndex].Lessons)
+            {
+                comboBox2.Items.Add(lesson.LessonName);
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Teacher teacher = Class.classes[comboBox1.SelectedIndex].Lessons[comboBox2.SelectedIndex].Teacher;
+                string assignmentName = textBox1.Text;
+                string dueDate = textBox2.Text;
+
+                Assignment assignment = AddAssigment(assignmentName, dueDate, teacher);
+                AddHomework(assignment);
+                MessageBox.Show("Homework added successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu: " + ex.Message);
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            SendHomework();
+        }
+
+        public void AddStudent(Student student, Assignment assignment)
+        {
+            assignment.AssignedStudents.Add(student);
+        }
+        
+        public void RemoveStudent(Student student, Assignment assignment)
+        {
+            assignment.AssignedStudents.Remove(student);
+        }
+
+        public Assignment AddAssigment(string assignmentName, string dueDate, Teacher teacher)
+        {
+            Assignment assignment = new Assignment(assignmentName,dueDate,teacher);
+            return assignment;
+        }
+
+        void IAssignmentProcesses.UpdateList()
         {
             foreach (Lesson lesson in Lesson.lessons)
             {
@@ -44,54 +90,18 @@ namespace SchoolApp
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        public void AddHomework(Assignment assignment)
         {
-            comboBox2.Items.Clear();
-
-            foreach (Lesson lesson in Class.classes[comboBox1.SelectedIndex].Lessons)
+            foreach (Student student in Class.classes[comboBox1.SelectedIndex].Lessons[comboBox2.SelectedIndex].Students)
             {
-                comboBox2.Items.Add(lesson.LessonName);
+                ((IAssignmentProcesses)this).AddStudent(student, assignment);
             }
+            listBox1.Items.Add(assignment.AssignmentName);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void SendHomework()
         {
-            try
-            {
-                Teacher teacher = Class.classes[comboBox1.SelectedIndex].Lessons[comboBox2.SelectedIndex].Teacher;
-                string assignmentName = textBox1.Text;
-                string dueDate = textBox2.Text;
-                Assignment assignment = new Assignment(assignmentName, dueDate, teacher);
-
-                foreach (Student student in Class.classes[comboBox1.SelectedIndex].Lessons[comboBox2.SelectedIndex].Students)
-                {
-                    ((IAssignmentProcesses)this).AddStudent(student, assignment);
-                }
-                listBox1.Items.Add(assignment.AssignmentName);
-
-                MessageBox.Show("Homework added successfully.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Bir hata oluştu: " + ex.Message);
-            }
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
             MessageBox.Show("Ödev teslim edildi");
-        }
-
-        public void AddStudent(Student student, Assignment assignment)
-        {
-            assignment.AssignedStudents.Add(student);
-        }
-        
-        public void RemoveStudent(Student student, Assignment assignment)
-        {
-            assignment.AssignedStudents.Remove(student);
         }
     }
 }

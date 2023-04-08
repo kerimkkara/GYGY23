@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolApp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,6 @@ namespace SchoolApp
 {
     public partial class SearchProcesses : Form, ISearchProcesses
     {
-        List<Lesson> lessonList = new List<Lesson>();
 
         public SearchProcesses()
         {
@@ -23,21 +23,32 @@ namespace SchoolApp
         public void FindLessonOfStudent(Student student)
         {
 
+            listBox1.Items.Clear();
+
             foreach (Lesson lesson in Lesson.lessons)
             {
                 if (lesson.Students.Contains(student))
                 {
-                    lessonList.Add(lesson);
+                    listBox1.Items.Add(lesson.LessonName);
                 }
             }
+        }
 
-            listBox1.Items.Clear();
-
-            foreach (Lesson lesson in lessonList)
+        public void FindClassOffLesson(Lesson lesson)
+        {
+            listBox2.Items.Clear();
+            foreach (Class clas in Class.classes)
             {
-                listBox1.Items.Add(lesson.LessonName);
+                if (clas.Lessons.Contains(lesson))
+                {
+                    listBox2.Items.Add(clas.ClassName);
+                }
             }
+        }
 
+        public void FindTeacherOffClass(Class clas)
+        {
+            throw new NotImplementedException();
         }
 
         public void List()
@@ -58,7 +69,18 @@ namespace SchoolApp
         {
             string selectedStudent = comboBox1.SelectedItem.ToString();
             Student selectedStudentObj = Student.students.Find(s => s.StudentName == selectedStudent);
-            ((ISearchProcesses)this).FindLessonOfStudent(selectedStudentObj);
+            FindLessonOfStudent(selectedStudentObj);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            string selectedLesson = comboBox2.SelectedItem.ToString();
+            Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
+
+            FindClassOffLesson(selectedLessonObj);
+        }
+
+        
     }
 }
