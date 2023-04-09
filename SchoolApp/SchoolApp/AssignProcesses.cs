@@ -22,7 +22,7 @@ namespace SchoolApp
         private void AssignProcesses_Load(object sender, EventArgs e)
         {
 
-             ((IAssignmentProcesses)this).UpdateList();
+            ((IAssignmentProcesses)this).UpdateList();
 
         }
 
@@ -76,10 +76,10 @@ namespace SchoolApp
         }
 
         public void AddStudent(Student student, Assignment assignment)
-        { 
+        {
             assignment.AssignedStudents.Add(student);
         }
-        
+
         public void RemoveStudent(Student student, Assignment assignment)
         {
             assignment.AssignedStudents.Remove(student);
@@ -87,7 +87,7 @@ namespace SchoolApp
 
         public Assignment AddAssigment(string assignmentName, string dueDate, Teacher teacher)
         {
-            Assignment assignment = new Assignment(assignmentName,dueDate,teacher);
+            Assignment assignment = new Assignment(assignmentName, dueDate, teacher);
             return assignment;
         }
 
@@ -98,12 +98,23 @@ namespace SchoolApp
                 foreach (Lesson lesson in Lesson.lessons)
                 {
                     comboBox2.Items.Add(lesson.LessonName);
+                    comboBox4.Items.Add(lesson.LessonName);
                 }
 
                 foreach (Class classes in Class.classes)
                 {
                     comboBox1.Items.Add(classes.ClassName);
+                    comboBox3.Items.Add(classes.ClassName);
+                }
 
+                foreach ( Student student in Student.students)
+                {
+                    comboBox5.Items.Add(student.StudentName);
+                }
+
+                foreach (Assignment assignment in Assignment.assignments)
+                {
+                    comboBox6.Items.Add(assignment.AssignmentName);
                 }
             }
             catch (Exception ex)

@@ -15,6 +15,8 @@ namespace SchoolApp
         public Teacher AssignedTeacher { get; set; }
         public List<Student> AssignedStudents { get; set; }
 
+        public static List<Assignment> assignments = new List<Assignment>();
+
         public Assignment(string assignmentName, string dueDate, Teacher assignedTeacher)
         {
             AssignmentId = ++counter;
@@ -22,6 +24,7 @@ namespace SchoolApp
             DueDate = dueDate;
             AssignedTeacher = assignedTeacher;
             AssignedStudents = new List<Student>();
+            assignments.Add(this);
         }
 
     }

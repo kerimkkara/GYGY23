@@ -52,6 +52,8 @@
             comboBox5 = new ComboBox();
             textBox3 = new TextBox();
             button2 = new Button();
+            label13 = new Label();
+            comboBox6 = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -196,7 +198,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(450, 155);
+            label11.Location = new Point(449, 186);
             label11.Name = "label11";
             label11.Size = new Size(35, 15);
             label11.TabIndex = 17;
@@ -205,7 +207,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(450, 190);
+            label12.Location = new Point(449, 221);
             label12.Name = "label12";
             label12.Size = new Size(95, 15);
             label12.TabIndex = 18;
@@ -230,21 +232,21 @@
             // comboBox5
             // 
             comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(549, 154);
+            comboBox5.Location = new Point(548, 185);
             comboBox5.Name = "comboBox5";
             comboBox5.Size = new Size(121, 23);
             comboBox5.TabIndex = 21;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(550, 185);
+            textBox3.Location = new Point(549, 216);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(120, 23);
             textBox3.TabIndex = 22;
             // 
             // button2
             // 
-            button2.Location = new Point(594, 224);
+            button2.Location = new Point(593, 255);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 23;
@@ -252,11 +254,30 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(450, 153);
+            label13.Name = "label13";
+            label13.Size = new Size(49, 15);
+            label13.TabIndex = 24;
+            label13.Text = "Öğrenci";
+            // 
+            // comboBox6
+            // 
+            comboBox6.FormattingEnabled = true;
+            comboBox6.Location = new Point(547, 149);
+            comboBox6.Name = "comboBox6";
+            comboBox6.Size = new Size(121, 23);
+            comboBox6.TabIndex = 25;
+            // 
             // AssignProcesses
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(comboBox6);
+            Controls.Add(label13);
             Controls.Add(button2);
             Controls.Add(textBox3);
             Controls.Add(comboBox5);
@@ -313,5 +334,7 @@
         private ComboBox comboBox5;
         private TextBox textBox3;
         private Button button2;
+        private Label label13;
+        private ComboBox comboBox6;
     }
 }
