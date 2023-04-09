@@ -63,11 +63,18 @@ namespace SchoolApp
 
         void IStudentProcesses.StudentList()
         {
-            listBox1.Items.Clear();
-            foreach (Student student in Student.students)
+            try
             {
-                string studentInfo = $"{student.StudentId} {student.StudentName}";
-                listBox1.Items.Add(studentInfo);
+                listBox1.Items.Clear();
+                foreach (Student student in Student.students)
+                {
+                    string studentInfo = $"{student.StudentId} {student.StudentName}";
+                    listBox1.Items.Add(studentInfo);
+                }
+                MessageBox.Show("Liste güncellendi");
+            }
+            catch(Exception ex) {
+                MessageBox.Show("Bir hata oluştu" + ex.Message);
             }
         }
     }

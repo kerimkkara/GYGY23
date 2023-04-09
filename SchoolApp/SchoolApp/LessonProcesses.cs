@@ -62,13 +62,23 @@ namespace SchoolApp
         {
             try
             {
-                string selectedStudent = comboBox3.SelectedItem.ToString();
-                string selectedLesson = comboBox2.SelectedItem.ToString();
+           
+                string selectedStudentFull = comboBox3.SelectedItem.ToString();
+                string selectedStudentId = selectedStudentFull.Split(' ')[0];
+                string selectedStudentName = selectedStudentFull.Split(' ')[1];
 
-                Student selectedStudentObj = Student.students.Find(s => s.StudentName == selectedStudent);
-                Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
+                string selectedLessonFull = comboBox2.SelectedItem.ToString();
+                string selectedLessonId = selectedLessonFull.Split(' ')[0];
+                string selectedLessonName = selectedLessonFull.Split(' ')[1];
+
+
+
+                Student selectedStudentObj = Student.students.Find(s => s.StudentName == selectedStudentName);
+                Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLessonName);
 
                 ((ILessonProcesses)this).AddStudent(selectedStudentObj, selectedLessonObj);
+
+                MessageBox.Show($"Öğrenci {selectedStudentName} , {selectedLessonName}dersine başarı ile eklendi");
             }
             catch (Exception ex)
             {
@@ -76,14 +86,17 @@ namespace SchoolApp
             }
         }
 
+        // hatalı
+
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                string selectedStudent = comboBox4.SelectedItem.ToString();
-                Lesson selectedStudentObj = Lesson.lessons.Find(s => s.LessonName == selectedStudent);
+                string selectedLessonFull = comboBox4.SelectedItem.ToString();
+                string selectedLesson = selectedLessonFull.Split(' ')[1];
+                Lesson selectedLessonObj = Lesson.lessons.Find(s => s.LessonName == selectedLesson);
 
-                List<Student> studentList = selectedStudentObj.Students;
+                List<Student> studentList = selectedLessonObj.Students;
                 listBox2.Items.Clear();
 
                 foreach (Student student in studentList)
@@ -95,6 +108,7 @@ namespace SchoolApp
             {
                 MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         public Lesson AddLesson(string name, Teacher teacher)
@@ -106,36 +120,48 @@ namespace SchoolApp
 
         void ILessonProcesses.LessonList()
         {
-            listBox1.Items.Clear();
-            foreach (Lesson lesson in Lesson.lessons)
+            try
             {
-                string lessonInfo = lesson.LessonId + " " + lesson.LessonName;
-                listBox1.Items.Add(lessonInfo);
+                listBox1.Items.Clear();
+                foreach (Lesson lesson in Lesson.lessons)
+                {
+                    string lessonInfo = lesson.LessonId + " " + lesson.LessonName;
+                    listBox1.Items.Add(lessonInfo);
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu " + ex.Message);
             }
         }
 
         void ILessonProcesses.UpdateList()
         {
-            comboBox1.Items.Clear();
-            comboBox2.Items.Clear();
-            comboBox3.Items.Clear();
-            comboBox4.Items.Clear();
-
-
-            foreach (Teacher teacher in Teacher.teachers)
+            try
             {
-                comboBox1.Items.Add($"{teacher.TeacherId} {teacher.TeacherName}");
-            }
+                comboBox1.Items.Clear();
+                comboBox2.Items.Clear();
+                comboBox3.Items.Clear();
+                comboBox4.Items.Clear();
 
-            foreach (Lesson lesson in Lesson.lessons)
-            {
-                comboBox2.Items.Add($"{lesson.LessonId} {lesson.LessonName}");
-                comboBox4.Items.Add($"{lesson.LessonId} {lesson.LessonName}");
-            }
 
-            foreach (Student student in Student.students)
+                foreach (Teacher teacher in Teacher.teachers)
+                {
+                    comboBox1.Items.Add($"{teacher.TeacherId} {teacher.TeacherName}");
+                }
+
+                foreach (Lesson lesson in Lesson.lessons)
+                {
+                    comboBox2.Items.Add($"{lesson.LessonId} {lesson.LessonName}");
+                    comboBox4.Items.Add($"{lesson.LessonId} {lesson.LessonName}");
+                }
+
+                foreach (Student student in Student.students)
+                {
+                    comboBox3.Items.Add($"{student.StudentId} {student.StudentName}");
+                }
+            } catch (Exception ex)
             {
-                comboBox3.Items.Add($"{student.StudentId} {student.StudentName}");
+                MessageBox.Show("Bir hata oluştu "+ ex.Message );
             }
         }
 

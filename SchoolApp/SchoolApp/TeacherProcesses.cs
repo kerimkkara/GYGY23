@@ -63,11 +63,18 @@ namespace SchoolApp
 
         void ITeacherProcesses.TeacherList()
         {
-            listBox1.Items.Clear();
-            foreach (Teacher teacher in Teacher.teachers)
+            try
             {
-                string teacherInfo = teacher.TeacherId + " " + teacher.TeacherName;
-                listBox1.Items.Add(teacherInfo);
+                listBox1.Items.Clear();
+                foreach (Teacher teacher in Teacher.teachers)
+                {
+                    string teacherInfo = teacher.TeacherId + " " + teacher.TeacherName;
+                    listBox1.Items.Add(teacherInfo);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu" + ex.Message);
             }
         }
     }

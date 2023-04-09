@@ -42,6 +42,11 @@
             button2 = new Button();
             label8 = new Label();
             listBox2 = new ListBox();
+            label9 = new Label();
+            label10 = new Label();
+            comboBox3 = new ComboBox();
+            button3 = new Button();
+            listBox3 = new ListBox();
             SuspendLayout();
             // 
             // label1
@@ -170,11 +175,61 @@
             listBox2.Size = new Size(164, 154);
             listBox2.TabIndex = 13;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(553, 104);
+            label9.Name = "label9";
+            label9.Size = new Size(51, 15);
+            label9.TabIndex = 14;
+            label9.Text = "Ders Seç";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(580, 194);
+            label10.Name = "label10";
+            label10.Size = new Size(40, 15);
+            label10.TabIndex = 15;
+            label10.Text = "Sonuç";
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(622, 100);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(121, 23);
+            comboBox3.TabIndex = 16;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(668, 143);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 17;
+            button3.Text = "Ara";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // listBox3
+            // 
+            listBox3.FormattingEnabled = true;
+            listBox3.ItemHeight = 15;
+            listBox3.Location = new Point(622, 234);
+            listBox3.Name = "listBox3";
+            listBox3.Size = new Size(148, 154);
+            listBox3.TabIndex = 18;
+            // 
             // SearchProcesses
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(listBox3);
+            Controls.Add(button3);
+            Controls.Add(comboBox3);
+            Controls.Add(label10);
+            Controls.Add(label9);
             Controls.Add(listBox2);
             Controls.Add(label8);
             Controls.Add(button2);
@@ -212,5 +267,10 @@
         private Button button2;
         private Label label8;
         private ListBox listBox2;
+        private Label label9;
+        private Label label10;
+        private ComboBox comboBox3;
+        private Button button3;
+        private ListBox listBox3;
     }
 }

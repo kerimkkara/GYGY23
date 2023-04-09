@@ -22,8 +22,15 @@ namespace SchoolApp
 
         private void ClassProcesses_Load(object sender, EventArgs e)
         {
-
-            ((IClassProcesses)this).UpdateList();
+            try
+            {
+                ((IClassProcesses)this).UpdateList();
+                MessageBox.Show("Listeler güncellendi");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu" + ex);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -113,7 +120,7 @@ namespace SchoolApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Bir hata oluştu" + ex.Message);
             }
         }
 
@@ -180,38 +187,46 @@ namespace SchoolApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Bir hata oluştu" + ex.Message);
             }
         }
 
         void IClassProcesses.UpdateList()
         {
-            comboBox1.Items.Clear();
-            comboBox2.Items.Clear();
-            comboBox3.Items.Clear();
-            comboBox4.Items.Clear();
-            comboBox5.Items.Clear();
-            comboBox6.Items.Clear();
-
-            foreach (Lesson lesson in Lesson.lessons)
+            try
             {
-                comboBox1.Items.Add(lesson.LessonName);
-                comboBox4.Items.Add(lesson.LessonName);
-                
+                comboBox1.Items.Clear();
+                comboBox2.Items.Clear();
+                comboBox3.Items.Clear();
+                comboBox4.Items.Clear();
+                comboBox5.Items.Clear();
+                comboBox6.Items.Clear();
 
+                foreach (Lesson lesson in Lesson.lessons)
+                {
+                    comboBox1.Items.Add(lesson.LessonName);
+                    comboBox4.Items.Add(lesson.LessonName);
+
+
+                }
+
+                foreach (Teacher teacher in Teacher.teachers)
+                {
+                    comboBox2.Items.Add(teacher.TeacherName);
+                }
+
+
+                foreach (Class classes in Class.classes)
+                {
+                    comboBox3.Items.Add(classes.ClassName);
+                    comboBox6.Items.Add(classes.ClassName);
+                    comboBox5.Items.Add(classes.ClassName);
+                }
+                MessageBox.Show("Listeler güncellendi");
             }
-
-            foreach (Teacher teacher in Teacher.teachers)
+            catch(Exception ex)
             {
-                comboBox2.Items.Add(teacher.TeacherName);
-            }
-
-
-            foreach (Class classes in Class.classes)
-            {
-                comboBox3.Items.Add(classes.ClassName);
-                comboBox6.Items.Add(classes.ClassName);
-                comboBox5.Items.Add(classes.ClassName);
+                MessageBox.Show("Bir hata oluştu." + ex.Message);
             }
         }
     }

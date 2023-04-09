@@ -22,41 +22,85 @@ namespace SchoolApp
 
         public void FindLessonOfStudent(Student student)
         {
-
-            listBox1.Items.Clear();
-
-            foreach (Lesson lesson in Lesson.lessons)
+            try
             {
-                if (lesson.Students.Contains(student))
+                listBox1.Items.Clear();
+
+                foreach (Lesson lesson in Lesson.lessons)
                 {
-                    listBox1.Items.Add(lesson.LessonName);
+                    if (lesson.Students.Contains(student))
+                    {
+                        listBox1.Items.Add(lesson.LessonName);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu: " + ex.Message);
+            }
         }
+
 
         public void FindClassOffLesson(Lesson lesson)
         {
-            listBox2.Items.Clear();
-            foreach (Class clas in Class.classes)
+            try
             {
-                if (clas.Lessons.Contains(lesson))
+                listBox2.Items.Clear();
+                foreach (Class clas in Class.classes)
                 {
-                    listBox2.Items.Add(clas.ClassName);
+                    if (clas.Lessons.Contains(lesson))
+                    {
+                        listBox2.Items.Add(clas.ClassName);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu: " + ex.Message);
             }
         }
 
-        public void FindTeacherOffClass(Class clas)
+        public void FindTeacherOffLesson(Lesson lesson)
         {
-            throw new NotImplementedException();
+            try
+            {
+                listBox3.Items.Clear();
+
+                string teacher = ($"{lesson.Teacher.TeacherId} {lesson.Teacher.TeacherName}");
+                listBox3.Items.Add(teacher);
+                MessageBox.Show("Başarı ile bulundu");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu: " + ex.Message);
+            }
         }
+
 
         public void List()
         {
-            comboBox1.Items.Clear();
-            foreach (Student student in Student.students)
+            try
             {
-                comboBox1.Items.Add(student);
+                comboBox1.Items.Clear();
+                comboBox2.Items.Clear();
+                comboBox3.Items.Clear();
+                foreach (Student student in Student.students)
+                {
+                    comboBox1.Items.Add(student.StudentName);
+                }
+
+                foreach (Lesson lesson in Lesson.lessons)
+                {
+                    comboBox2.Items.Add(lesson.LessonName);
+                    comboBox3.Items.Add(lesson.LessonName);
+                }
+
+
+                MessageBox.Show("Listeler başarı ile yüklendi");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu: " + ex.Message);
             }
         }
 
@@ -67,20 +111,46 @@ namespace SchoolApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string selectedStudent = comboBox1.SelectedItem.ToString();
-            Student selectedStudentObj = Student.students.Find(s => s.StudentName == selectedStudent);
-            FindLessonOfStudent(selectedStudentObj);
+            try
+            {
+                string selectedStudent = comboBox1.SelectedItem.ToString();
+                Student selectedStudentObj = Student.students.Find(s => s.StudentName == selectedStudent);
+                FindLessonOfStudent(selectedStudentObj);
+                MessageBox.Show("Arama işlemi başarılı");
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
-            string selectedLesson = comboBox2.SelectedItem.ToString();
-            Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
+            try
+            {
+                string selectedLesson = comboBox2.SelectedItem.ToString();
+                Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
 
-            FindClassOffLesson(selectedLessonObj);
+                FindClassOffLesson(selectedLessonObj);
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu " + ex.Message);
+            }
         }
 
-        
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string selectedLesson = comboBox3.SelectedItem.ToString();
+                Lesson selectedLessonObj = Lesson.lessons.Find(l => l.LessonName == selectedLesson);
+
+                FindTeacherOffLesson(selectedLessonObj);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu " + ex.Message);
+            }
+        }
     }
 }

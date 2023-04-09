@@ -13,7 +13,9 @@ namespace SchoolApp.Interfaces
 
         void FindClassOffLesson(Lesson lesson);
 
-        void FindTeacherOffClass(Class clas);
+        void FindTeacherOffLesson(Lesson lesson);
+
+
     }
 
 }

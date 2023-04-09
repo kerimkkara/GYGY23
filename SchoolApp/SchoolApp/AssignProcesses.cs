@@ -21,16 +21,25 @@ namespace SchoolApp
 
         private void AssignProcesses_Load(object sender, EventArgs e)
         {
-           ((IAssignmentProcesses)this).UpdateList();
+
+             ((IAssignmentProcesses)this).UpdateList();
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox2.Items.Clear();
-
-            foreach (Lesson lesson in Class.classes[comboBox1.SelectedIndex].Lessons)
+            try
             {
-                comboBox2.Items.Add(lesson.LessonName);
+                comboBox2.Items.Clear();
+
+                foreach (Lesson lesson in Class.classes[comboBox1.SelectedIndex].Lessons)
+                {
+                    comboBox2.Items.Add(lesson.LessonName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata oluştu" + ex.Message);
             }
 
         }
@@ -56,12 +65,18 @@ namespace SchoolApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            SendHomework();
+            try
+            {
+                SendHomework();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata oluştu" + ex.Message);
+            }
         }
 
         public void AddStudent(Student student, Assignment assignment)
-        {
+        { 
             assignment.AssignedStudents.Add(student);
         }
         
@@ -78,15 +93,22 @@ namespace SchoolApp
 
         void IAssignmentProcesses.UpdateList()
         {
-            foreach (Lesson lesson in Lesson.lessons)
+            try
             {
-                comboBox2.Items.Add(lesson.LessonName);
+                foreach (Lesson lesson in Lesson.lessons)
+                {
+                    comboBox2.Items.Add(lesson.LessonName);
+                }
+
+                foreach (Class classes in Class.classes)
+                {
+                    comboBox1.Items.Add(classes.ClassName);
+
+                }
             }
-
-            foreach (Class classes in Class.classes)
+            catch (Exception ex)
             {
-                comboBox1.Items.Add(classes.ClassName);
-
+                MessageBox.Show("Bir hata oluştu", ex.Message);
             }
         }
 
